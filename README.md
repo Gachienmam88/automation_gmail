@@ -14,9 +14,9 @@ Tool tu dong quan ly tai khoan Gmail hang loat: login, doi mat khau, them email/
 
 ## Yeu cau he thong
 
-- Windows 10/11
+- Windows 10/11 hoac macOS 12+
 - Python 3.10+
-- Firefox Portable Nightly (tai rieng)
+- Firefox Portable / Firefox (tai rieng)
 - GeckoDriver v0.36+ (tai rieng)
 
 ## Cai dat
@@ -34,34 +34,65 @@ cd automation_gmail
 pip install -r requirements.txt
 ```
 
-### 3. Tai Firefox Portable Nightly
+### 3. Tai Firefox va GeckoDriver
 
-Tai tu: https://portableapps.com/apps/internet/firefox-portable-nightly
+#### Windows
 
-Giai nen vao thu muc du an:
+**Firefox Portable Nightly:**
+- Tai tu: https://portableapps.com/apps/internet/firefox-portable-nightly
+- Giai nen vao thu muc du an:
 
 ```
 automation_gmail/
   FirefoxPortableNightly/
     App/
       Firefox64/
-        firefox.exe    <-- Can file nay
+        firefox.exe
 ```
 
-### 4. Tai GeckoDriver
+**GeckoDriver:**
+- Tai tu: https://github.com/mozilla/geckodriver/releases (chon `geckodriver-vX.XX-win64.zip`)
+- Giai nen, dat `geckodriver_new.exe` vao thu muc goc du an
 
-Tai tu: https://github.com/mozilla/geckodriver/releases
+#### macOS
 
-Chon phien ban phu hop (v0.36+), tai file Windows 64-bit.
+**Firefox:**
+- Tai Firefox tu: https://www.mozilla.org/firefox/download/
+- Cai dat binh thuong vao `/Applications/Firefox.app`
+- Hoac dung Homebrew:
 
-Dat file `geckodriver_new.exe` vao thu muc goc du an:
-
+```bash
+brew install --cask firefox
 ```
-automation_gmail/
-  geckodriver_new.exe    <-- Dat o day
+
+**GeckoDriver:**
+
+```bash
+# Cach 1: Homebrew (de nhat)
+brew install geckodriver
+
+# Cach 2: Tai thu cong
+# Tai tu https://github.com/mozilla/geckodriver/releases (chon macos.tar.gz)
+# Giai nen va di chuyen:
+tar -xzf geckodriver-vX.XX-macos.tar.gz
+mv geckodriver geckodriver_new
+chmod +x geckodriver_new
 ```
 
-### 5. Chay app
+**Cap nhat duong dan trong `core/engine.py`:**
+
+```python
+# Doi dong 34-35 thanh:
+FIREFOX_BINARY = "/Applications/Firefox.app/Contents/MacOS/firefox"
+GECKODRIVER_PATH = str(BASE_DIR / "geckodriver_new")  # hoac duong dan homebrew
+```
+
+> Luu y: Tren macOS, Tkinter co the can cai them:
+> ```bash
+> brew install python-tk
+> ```
+
+### 4. Chay app
 
 ```bash
 python main.py
@@ -98,9 +129,9 @@ automation_gmail/
 │
 ├── network/                # (reserved)
 │
-├── FirefoxPortableNightly/ # Firefox binary (tai rieng, khong commit)
-├── firefox_profiles/       # Profiles nguoi dung (tu tao, khong commit)
-└── geckodriver_new.exe     # GeckoDriver (tai rieng, khong commit)
+├── FirefoxPortableNightly/ # Firefox binary - Windows (tai rieng)
+├── firefox_profiles/       # Profiles nguoi dung (tu tao)
+└── geckodriver_new.exe     # GeckoDriver (tai rieng)
 ```
 
 ## Huong dan su dung
@@ -117,3 +148,4 @@ automation_gmail/
 - Trinh duyet se **giu mo** sau khi task hoan thanh de kiem tra ket qua
 - Bam **STOP** de dong tat ca trinh duyet
 - Du lieu duoc luu tu dong vao `data.json`
+- Tren macOS can sua duong dan Firefox binary trong `core/engine.py`
