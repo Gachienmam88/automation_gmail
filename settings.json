@@ -1,0 +1,10 @@
+{
+  "max_threads": 3,
+  "captcha_service": "manual",
+  "captcha_api_key": "",
+  "proxy_enabled": true,
+  "proxy_list": "",
+  "proxy_rotate_every_n": 1,
+  "auto_export": false,
+  "sync_interval": 30
+}

@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Browser profiles (contains session data, cookies)
+firefox_profiles/
+chrome_profiles/
+
+# Firefox Portable (large binary, download separately)
+FirefoxPortableNightly*/
+Firefox/
+
+# GeckoDriver (download separately)
+geckodriver*.exe
+geckodriver*.zip
+
+# Downloads & exports
+downloads/
+exports/
+
+# Credentials (sensitive)
+credentials/
+*.json.bak
+
+# Logs
+logs/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Claude
+.claude/
