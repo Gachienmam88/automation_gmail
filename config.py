@@ -78,6 +78,11 @@ AUTO_EXPORT_ENABLED = False
 CAPTCHA_SERVICE = "manual"  # "manual", "2captcha", "anticaptcha"
 CAPTCHA_API_KEY = ""
 
+# ─── Proxy ───
+PROXY_ENABLED = False
+PROXY_LIST = []
+PROXY_ROTATE_EVERY_N = 1
+
 # ─── Threading ───
 MAX_THREADS = 3
 THREAD_DELAY_BETWEEN = 2  # Seconds between starting threads
